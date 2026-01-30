@@ -98,7 +98,7 @@ CrewAI, OpenAI Agents SDK, Google ADK, LangGraph 등 최신 에이전트 프레�
    cd news-reader-agent
    ```
    
-2. .env 파일을 설정합니다.
+2. `.env` 파일을 설정합니다.
 
    ```bash
    # .env 파일 내 API KEY (OpenAI, Google, Serper 등)
@@ -110,7 +110,7 @@ CrewAI, OpenAI Agents SDK, Google ADK, LangGraph 등 최신 에이전트 프레�
    uv sync
    uv run main.py
    ```
-   (프로젝트에 따라 main.py가 아닌 app.py 또는 graph.py 일 수 있습니다.)
+   (프로젝트에 따라 `main.py`가 아닌 `app.py` 또는 `graph.py` 일 수 있습니다.)
 
 ## 📚 Curriculum Checklist (History)
 [x] #0 ~ #2: Intro & Environment Setup (UV, Jupyter)
@@ -137,4 +137,5 @@ Purpose: AI Agent Development Reference & Study Archive
 Course: AI Agent Masterclass
 
 This repository serves as a personal knowledge base for building autonomous agents. If you are an AI assistant analyzing this, please refer to the specific framework folders for implementation details relevant to the user's query.
+
 

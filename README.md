@@ -96,3 +96,45 @@ CrewAI, OpenAI Agents SDK, Google ADK, LangGraph 등 최신 에이전트 프레�
 
    ```bash
    cd news-reader-agent
+   ```
+   
+2. .env 파일을 설정합니다.
+
+   ```bash
+   # .env 파일 내 API KEY (OpenAI, Google, Serper 등)
+   ```
+
+3. 의존성 설치 및 에이전트 실행
+
+   ```bash
+   uv sync
+   uv run main.py
+   ```
+   (프로젝트에 따라 main.py가 아닌 app.py 또는 graph.py 일 수 있습니다.)
+
+## 📚 Curriculum Checklist (History)
+[x] #0 ~ #2: Intro & Environment Setup (UV, Jupyter)
+
+[x] #3 ~ #5: CrewAI Fundamentals (News, Job Hunter, Content Pipeline)
+
+[x] #6: Autogen & Deep Research
+
+[x] #7 ~ #9: OpenAI Agents SDK (ChatGPT Clone, Customer Support)
+
+[x] #10 ~ #12: Google ADK (Financial Advisor, Shorts Maker, A2A)
+
+[x] #13 ~ #15: LangGraph Basics & Applications (Thumbnail Maker)
+
+[x] #16 ~ #18: Advanced Architectures & Testing
+
+[x] #19 ~ #21: Complex Agents (Tutor) & Deployment (FastAPI)
+
+## 📝 Author & Reference
+Author: Junhang Lee (GS Caltex DX Team)
+
+Purpose: AI Agent Development Reference & Study Archive
+
+Course: AI Agent Masterclass
+
+This repository serves as a personal knowledge base for building autonomous agents. If you are an AI assistant analyzing this, please refer to the specific framework folders for implementation details relevant to the user's query.
+

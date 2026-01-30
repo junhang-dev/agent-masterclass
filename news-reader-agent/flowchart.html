@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrewAI 뉴스 에이전트 워크플로우 (개선판)</title>
+    <style>
+        body {
+            font-family: 'SF Pro Display', 'Noto Sans KR', sans-serif;
+            background-color: #0a192f; /* Darker Navy Blue */
+            color: #ccd6f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            margin: 0;
+            background-image:
+                linear-gradient(rgba(13, 27, 42, 0.8) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(13, 27, 42, 0.8) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #64ffda; /* Mint Green Accent */
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+        .mermaid {
+            width: 100%;
+            max-width: 1000px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🤖 CrewAI News Infographic Workflow</h1>
+
+    <pre class="mermaid">
+    graph TD
+        subgraph "Phase 1: 전문 보고서 생성"
+            A[/"📄 뉴스 주제 (Topic)"/] --> B("📰 News Hunter Agent");
+            B --> C("📝 output/content_harvest.md");
+
+            C --> D("✍️ Summarizer Agent");
+            D --> E("📑 output/summary.md");
+
+            E --> F("🧐 Curator Agent");
+            F --> G("🗞️ output/final_report.md");
+        end
+
+        subgraph "Phase 2: 인포그래픽 생성 및 번역"
+            G --> H("🎭 Storyteller Agent");
+            H --> I("📖 output/story_en.md");
+
+            I --> J("🌐 Translator Agent");
+            J --> K("🇰🇷 output/story_ko.md");
+
+            K --> L("🎨 Infographic Designer Agent");
+            L --> M([🏆 final_infographic.html]);
+        end
+
+        %% --- Styling ---
+        style A fill:#ccd6f6,stroke:#64ffda,stroke-width:2px,color:#0a192f,font-weight:bold
+        style M fill:#64ffda,stroke:#a8b2d1,stroke-width:2px,color:#0a192f,font-weight:bold
+
+        classDef agent fill:#112240,stroke:#8892b0,stroke-width:2px,color:#ccd6f6,padding:15px,font-size:16px
+        classDef output fill:transparent,stroke:#303C55,stroke-width:2px,color:#8892b0,padding:10px,font-size:14px,stroke-dasharray: 5 5
+        
+        class B,D,F,H,J,L agent
+        class C,E,G,I,K output
+    </pre>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    </script>
+</body>
+</html>

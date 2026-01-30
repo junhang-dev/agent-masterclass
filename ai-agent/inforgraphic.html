@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 에이전트 인포그래픽</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+        :root {
+            --color-bg: #f0f4f8;
+            --color-card-bg: #ffffff;
+            --color-text: #333;
+            --color-accent: #4a90e2;
+            --color-brain: #f5a623;
+            --color-heart: #d0021b;
+            --color-memory: #7ed321;
+            --color-tools: #50e3c2;
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--color-text);
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+
+        .infographic-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 2.5rem;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+        }
+
+        .agent-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--color-accent);
+            color: white;
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+            box-shadow: 0 8px 30px rgba(74, 144, 226, 0.4);
+            border: 5px solid white;
+        }
+
+        .agent-core span {
+            font-size: 4rem;
+        }
+
+        .agent-core h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .component-card {
+            background-color: var(--color-card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .component-card .icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .component-card h3 {
+            font-size: 1.4rem;
+            margin: 0;
+        }
+
+        .component-card .subtitle {
+            font-size: 0.9rem;
+            color: #777;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .component-card p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Color coding for cards */
+        #brain { border-color: var(--color-brain); }
+        #heart { border-color: var(--color-heart); }
+        #memory { border-color: var(--color-memory); }
+        #tools { border-color: var(--color-tools); }
+        
+        /* Media Query for mobile devices */
+        @media (max-width: 768px) {
+            .infographic-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding-top: 140px; /* Space for the core */
+            }
+            .agent-core {
+                position: static;
+                transform: none;
+                width: 150px;
+                height: 150px;
+                margin: 0 auto 2rem auto;
+            }
+             .agent-core span { font-size: 3rem; }
+             .agent-core h2 { font-size: 1.2rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI 에이전트의 구성 요소</h1>
+        <p>"심장, 두뇌, 기억, 도구"로 이해하는 에이전트의 핵심</p>
+    </header>
+
+    <div class="infographic-grid">
+        
+        <div class="agent-core">
+            <span>🤖</span>
+            <h2>AI Agent</h2>
+        </div>
+
+        <div id="brain" class="component-card">
+            <div class="icon">🧠</div>
+            <h3>두뇌 (Brain)</h3>
+            <div class="subtitle">Planning & Reasoning</div>
+            <p>무엇을 할지 결정하는 의사결정자.<br>(예: `gpt-4o-mini` 모델)</p>
+        </div>
+
+        <div id="heart" class="component-card">
+            <div class="icon">❤️</div>
+            <h3>심장 (Heart)</h3>
+            <div class="subtitle">The `while True` Loop</div>
+            <p>"Listen → Think → Act" 사이클을 반복하며 에이전트를 살아있게 합니다.</p>
+        </div>
+
+        <div id="memory" class="component-card">
+            <div class="icon">📚</div>
+            <h3>기억 (Memory)</h3>
+            <div class="subtitle">Context & Learning</div>
+            <p>대화의 맥락을 기억하고 학습합니다.<br>(예: `messages` 리스트)</p>
+        </div>
+
+        <div id="tools" class="component-card">
+            <div class="icon">🛠️</div>
+            <h3>도구 (Tools)</h3>
+            <div class="subtitle">Functions & APIs</div>
+            <p>외부 세계와 상호작용하고 특정 작업을 수행합니다.<br>(예: `get_weather` 함수)</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

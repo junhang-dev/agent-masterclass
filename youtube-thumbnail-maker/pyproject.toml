@@ -1,0 +1,24 @@
+[project]
+name = "youtube-thumbnail-maker"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "google-cloud-aiplatform>=1.128.0",
+    "google-generativeai>=0.8.5",
+    "langchain[openai]>=0.3.27",
+    "langgraph>=0.6.7",
+    "langgraph-cli[inmem]>=0.4.2",
+    "langsmith>=0.4.28",
+    "openai[aiohttp]>=1.107.3",
+    "pillow>=12.0.0",
+    "python-dotenv>=1.1.1",
+    "tiktoken>=0.11.0",
+    "yt-dlp>=2025.11.12",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.30.1",
+]

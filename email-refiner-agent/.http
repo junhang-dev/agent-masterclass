@@ -1,0 +1,13 @@
+APP_NAME = "travel_advisor_agent"
+USER_ID = "u_123"
+SESSION_ID = "55cdd310-8247-4815-9246-23452c56dc92"
+
+message = {
+    "appName": APP_NAME,
+    "userId": USER_ID,
+    "sessionId": SESSION_ID,
+    "newMessage": {
+        "parts": [{"text": "I want to go to seoul"}],
+        "role": "user",
+    },
+}

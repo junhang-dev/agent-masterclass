@@ -1,0 +1,58 @@
+Junhang
+Data Analyst | AI Developer
+
+📧 your.email@email.com | 📱 +82 10-0000-0000
+🌐 LinkedIn: https://www.google.com/search?q=linkedin.com/in/yourprofile | GitHub: https://www.google.com/search?q=github.com/yourprofile
+📍 Yeosu-si, Jeollanam-do, South Korea
+
+Professional Summary
+A highly practical and results-oriented Data Analyst and AI Developer with expertise in designing and implementing real-time data pipelines, process optimization models, and intelligent automation solutions. Proficient in Python, SQL, and advanced statistical analysis to translate complex data into actionable insights. Proven ability to build custom AI tools for knowledge management and decision support, with a strong focus on developing modular, efficient, and low-dependency code.
+
+Technical Skills
+Languages: Python, SQL
+Data Analysis & Statistics: Statistical Modeling, t-test, ANOVA, Chi-square Test, Regression, SHAP
+Machine Learning: LightGBM, Real-time Optimization, Data Pipeline Design
+AI & Automation: CrewAI, AI Summarization, OCR Processing, gRPC, Subprocess
+Tools & Platforms: Streamlit, Real-time Databases (RTDB), Git, GitHub
+
+Professional Experience
+Data Analyst & AI Developer
+WEF Lighthouse Support & Independent Projects | Yeosu, South Korea | [Start Date] - Present
+
+Designed and developed a real-time FCC optimization dashboard using Streamlit, LightGBM, and RTDB to drive ZSM-5 process enhancements and support WEF Lighthouse initiatives.
+
+Engineered an automated system for 8-hour interval simulations and constraint validation, improving the speed and accuracy of operational decision-making.
+
+Built a local AI-powered knowledge management pipeline leveraging OCR and summarization models for automated daily document archiving and insight extraction.
+
+Applied rigorous statistical analysis (t-tests, regression, etc.) to solve complex problems and validate model performance.
+
+Championed a coding philosophy centered on simplicity and modularity, creating maintainable and low-dependency Python scripts for data processing and analysis.
+
+Education
+[Your Degree Title]
+[University Name] | [City, Country] | [Start Year] - [End Year]
+
+Relevant Coursework: [List relevant courses like Data Structures, Algorithms, Database Systems, etc.]
+
+Projects
+Big Data Analyst Certification Preparation
+Python, Statistical Modeling
+
+Systematically solved and organized a wide range of past certification problems.
+
+Developed a repository of customized Python scripts for various statistical tests and modeling techniques to accelerate problem-solving and deepen understanding of core concepts.
+
+Multi-Agent Routine Automation
+CrewAI, Python
+
+Currently developing a multi-agent system using CrewAI to automate complex personal and professional routines.
+
+This project focuses on orchestrating multiple AI agents to handle intricate workflows, from data gathering and analysis to report generation.
+
+Languages
+Korean: Native
+English: Professional
+
+Certifications
+Big Data Analyst (빅데이터분석기사) (2025)

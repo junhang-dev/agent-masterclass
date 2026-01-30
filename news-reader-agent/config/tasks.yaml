@@ -1,0 +1,289 @@
+content_harvesting_task:
+  description: >
+    Collect recent news articles based on {topic}.
+
+    Steps include:
+    1. Use the search tool to search for recent news articles about {topic}
+    2. From the search results, identify URLs from credible sources.
+
+    3. **IMPORTANT: Only select actual article pages, not topic hubs or tag listings**
+      You must filter out any URLs that are likely to be:
+      - Topic/tag/section index pages (e.g., URLs containing "/tag/", "/topic/", "/hub/", "/section/", "/category/")
+      - Pages with no unique headline or timestamp
+      - Pages that only contain a list of other stories or links
+      ✅ Acceptable article URLs:
+      - Should contain a full article with body text
+      - Should have a clear headline and publication date
+      - Often include slugs like `/2023/10/.../story-title` or unique story IDs
+      ❌ Reject the following types of URLs:
+      - https://www.nytimes.com/topic/ 
+      - https://apnews.com/hub
+      - https://aljazeera.com/tag
+      These are topic collections, not individual articles.
+
+    4. For each **accepted** article URL:
+      - Use the scrape tool to extract the full article content from the URL
+      - Extract metadata: title, source, publication date and complete article text.
+
+    5. Apply intelligent filtering to remove:
+      - Articles shorter than 200 words
+      - Articles older than 48 hours (unless specifically relevant)
+      - Pages that failed to scrape or contain no substantial content
+
+    6. Classify each article into appropriate topic categories (Tech, Politics, Business, Science, Health, Sports, International, etc.)
+
+    7. Assign credibility scores (1-10) based on source reputation and content quality
+
+    8. Assign relevance scores (1-10) based on how well the article matches the requested {topic}
+
+  expected_output: >
+    A well-structured markdown document containing the collected news articles with this exact format:
+
+    # News Articles Collection: {topic}
+
+    **Collection Summary**
+    - Total articles found:
+    - Articles after filtering:
+    - Duplicates removed:
+    - Sources accessed:
+    - Search queries used:
+    - Search timestamp:
+
+    ---
+
+    ## Article 1: [Article Headline]
+
+    **Source:**
+    **Date:**
+    **URL:**
+    **Category:**
+    **Credibility Score:**
+    **Relevance Score:**
+
+
+    ---
+    [Use this format for all articles...]
+  agent: news_hunter_agent
+  markdown: true
+  output_file: output/content_harvest.md
+  create_directory: true
+
+summarization_task:
+  description: >
+    Review the markdown file from the previous step (`output/content_harvest.md`), which contains the collected news articles. 
+    Your goal is to process each article listed in that file.
+
+    For each article, you will find a URL. Use the scrape tool with that specific URL to ensure you have the full, most recent content.
+
+    For each article found in the file, create:
+    1. **Headline Summary** (≤280 characters, tweet-style)
+       - Capture the absolute essence in social media format
+       - Focus on the most newsworthy element
+       - Include key numbers or impact metrics when relevant
+
+    2. **Executive Summary** (150–200 words, concise briefing)
+       - Perfect for busy professionals and news skimmers
+       - Include the main development and immediate implications
+       - Mention key players and basic context
+
+    3. **Comprehensive Summary** (500-700 words with full context)
+       - Provide full context and background information
+       - Include multiple perspectives and expert opinions
+       - Explain technical concepts for general audience
+       - Cover implications and future outlook
+
+    Maintain journalistic tone, objectivity, and readability throughout all summary levels.
+    Use metadata from the original articles to guide emphasis and level of detail.
+
+  expected_output: >
+    A structured markdown document containing multi-tier summaries the format specified in the original prompt:
+
+    # News Summaries: {topic}
+
+    **Summary Report Overview**
+    - Total articles processed:
+    - Summary generation date:
+
+    ---
+
+    ## Article 1: [Original Headline]
+
+    **Source:**
+    **Date:**
+    **Original URL:**
+
+    ### 📱 Headline Summary (Tweet-length)
+    [280-character summary here...]
+
+    ### 📋 Executive Summary
+    [150-200 word professional briefing here...]
+
+    ### 📖 Comprehensive Summary
+    [300-500 word detailed summary with full context here...]
+
+    **Summary Quality Metrics:**
+    - Recommended audience:
+    - Key topics covered:
+    - Important statistics:
+    - Notable quotes:
+
+    ---
+
+    ## Article 2: [Next Article Headline] 
+
+    [Continue same format for all articles...]
+  agent: summarizer_agent
+  markdown: true
+  output_file: output/summary.md
+  create_directory: true
+
+final_report_assembly_task:
+  description: >
+    Create the final, publication-ready markdown news briefing.
+    Your primary source of information is the multi-tier summaries provided in the `summary.md` file from the previous task.
+    by combining all previous work into a professional, cohesive report suitable for daily publication.
+
+    Assembly process:
+    1. **Follow the editorial plan** from the curation task for structure and flow
+    2. **Apply appropriate summary levels** for each story based on editorial decisions
+    3. **Include editorial transitions** and section introductions from the curation plan
+    4. **Add professional opening** that summarizes the day's key developments
+    5. **Create closing section** that ties together themes and looks ahead
+    6. **Ensure consistent formatting** and professional presentation throughout
+    7. **Include proper attribution** and source references where appropriate
+
+    The final report should read like a premium news briefing from a major publication.
+
+  expected_output: >
+    A complete, publication-ready markdown document with this professional structure:
+
+    # Daily News Briefing: {topic}
+
+    **Date:** 
+    **Generated:** 
+    **Stories Covered:** 
+
+    ## Executive Summary
+
+    [Compelling opening paragraph that captures the day's most important developments 
+    and sets context for the full briefing]
+
+    ---
+
+    ## 🚨 Today's Lead Story
+
+    ### [Compelling headline for lead story]
+
+    [Comprehensive summary with full context, implications, and significance]
+
+    **Source:** [Publication] | **Read more:** [Link](url)
+
+    ---
+
+    ## 📈 Breaking News & Developments
+
+    [Editorial introduction to this section]
+
+    ### [Story Headline]
+    [Executive or comprehensive summary based on editorial plan]
+    **Source:** [Publication] | **Read more:** [Link](url)
+
+    ### [Story Headline]  
+    [Executive or comprehensive summary based on editorial plan]
+    **Source:** [Publication] | **Read more:** [Link](url)
+
+    ---
+
+    ## 💼 Technology & Innovation
+
+    [Editorial introduction to this section]
+
+    ### [Story Headline]
+    [Appropriate summary level based on editorial decisions]
+    **Source:** [Publication] | **Read more:** [Link](url)
+
+    [Continue with all sections as defined in editorial plan...]
+
+    ---
+
+    ## 🎯 Editor's Analysis
+
+    **Key Themes Today:**
+    - [Major trend or theme identified across stories]
+    - [Secondary pattern or development]
+
+    **What This Means:**
+    [Editorial insight about broader implications of the day's news]
+
+    **Looking Ahead:**
+    [What to watch for in coming days based on today's developments]
+
+    ---
+
+    ## 📚 Additional Reading
+
+    **Related Stories:**
+    - [Brief mentions of secondary stories with links]
+
+    **Background Context:**
+    - [Links to important background information for ongoing stories]
+
+    ---
+
+  agent: curator_agent
+  markdown: true
+  output_file: output/final_report.md
+  create_directory: true
+
+storytelling_task:
+  description: >
+    Review the final news briefing from the previous step (`output/final_report.md`).
+    Based on the report, create four distinct takeaways. Each takeaway must have a short, witty, and insightful headline, followed by one concise paragraph.
+    The tone should be professional yet engaging, like a summary from Axios. Avoid humor that is too informal or silly.
+  expected_output: >
+    A markdown file with a main title and four sections, each with a headline and a paragraph.
+    Format:
+    # [Main Title: A clever, overarching theme for the topic]
+    
+    ## [Panel 1: Witty Headline]
+    [Concise paragraph for panel 1...]
+
+    ## [Panel 2: Witty Headline]
+    [Concise paragraph for panel 2...]
+
+    ## [Panel 3: Witty Headline]
+    [Concise paragraph for panel 3...]
+
+    ## [Panel 4: Witty Headline]
+    [Concise paragraph for panel 4...]
+  agent: storyteller_agent
+  output_file: output/story_en.md
+  create_directory: true
+
+translation_task:
+  description: >
+    Translate the 4-part story from the previous task (`output/story_en.md`) into natural and engaging Korean.
+    Preserve the fun and witty tone. Avoid literal, stiff translations.
+    The output format must be identical to the input format, just in Korean.
+  expected_output: >
+    A markdown file containing the translated 4-part story in Korean, maintaining the exact same structure as the source file.
+  agent: translator_agent
+  output_file: output/story_ko.md
+  create_directory: true
+
+infographic_creation_task:
+  description: >
+    Read the translated Korean content from the `output/story_ko.md` file.
+    Generate a single, self-contained HTML file to display the content.
+    The design MUST follow these specific guidelines:
+    - The layout must be a 2x2 grid of cards.
+    - The background of the page should be a neutral, light color (e.g., #f0f2f5).
+    - Each of the four cards must have a white background, subtle box-shadow, and rounded corners.
+    - Each card must display its headline in a bold, larger font and the paragraph below it in a clean, readable font.
+    - Use a professional and limited color palette. Do not use overly bright or distracting colors.
+    - The final output must be only the raw HTML code, starting with `<!DOCTYPE html>`.
+  expected_output: >
+    The complete, raw HTML code for a clean, professional, card-style infographic page.
+  agent: infographic_designer_agent
+  output_file: output/final_infographic.html
+  create_directory: true
